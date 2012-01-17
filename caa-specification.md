@@ -84,7 +84,7 @@ users would most likely expect to see in:
 
 #### Responses
 
-- 303 if the community have decided upon a "front" image for this
+- 307 if the community have decided upon a "front" image for this
   release.
 
 - 400 if {mbid} cannot be parsed as a valid UUID.
@@ -102,8 +102,8 @@ users would most likely expect to see in:
     > GET /release/99b09d02-9cc9-3fed-8431-f162165a9371/front HTTP/1.1
     > Host: coverartarchive.org
 
-    < HTTP/1.0 200 OK
-    < Status: 303
+    < HTTP/1.0 307 OK
+    < Status: 307
     < Location: http://coverartarchive.org/release/99b09d02-9cc9-3fed-8431-f162165a9371/af3d070
 
 
@@ -121,7 +121,7 @@ the response of a /release/{mbid} request.
 
 #### Responses
 
-- 303 redirect to a binary image, matching the Content-Type to a
+- 307 redirect to a binary image, matching the Content-Type to a
   value in the requests Accept header field.
 
 - 404 if a release with this MBID cannot be found.
@@ -135,9 +135,9 @@ the response of a /release/{mbid} request.
     > GET /release/foo/front HTTP/1.1
     > Host: coverartarchive.org
 
-    < HTTP/1.0 303 OK
-    < Status: 303
-    < Location: http://caa.internetarchive.org/mbid-99b09d02-9cc9-3fed-8431-f162165a9371/mbid-99b09d02-9cc9-3fed-8431-f162165a9371-af3d070.jpg
+    < HTTP/1.0 307 OK
+    < Status: 307
+    < Location: http://archive.org/download/mbid-99b09d02-9cc9-3fed-8431-f162165a9371/mbid-99b09d02-9cc9-3fed-8431-f162165a9371-af3d070.jpg
 
 
 --------
