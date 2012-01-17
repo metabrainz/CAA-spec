@@ -39,6 +39,29 @@ Fetch a listing of available cover art for a MusicBrainz release.
 
 -   503 if the user has exceeded their rate limit.
 
+#### Example
+
+    > GET /release/99b09d02-9cc9-3fed-8431-f162165a9371 HTTP/1.1
+    > Host: coverartarchive.org
+    > Accept: application/json
+
+    < HTTP/1.0 200 OK
+    < Status: 200
+    {
+      "release": {
+        "name": "We Hear You",
+        "artist_credit": "Luke Vibert"
+      },
+      "artwork": [
+        {
+          "approved": true,
+          "id": "af3d070",
+          "front": true
+        }
+      ]
+    }
+
+
 ### /release/{mbid}/front
 
 #### Summary
@@ -74,6 +97,16 @@ users would most likely expect to see in:
 
 - 503 if the user has exceeded their rate limit.
 
+#### Example
+
+    > GET /release/99b09d02-9cc9-3fed-8431-f162165a9371/front HTTP/1.1
+    > Host: coverartarchive.org
+
+    < HTTP/1.0 200 OK
+    < Status: 303
+    < Location: http://coverartarchive.org/release/99b09d02-9cc9-3fed-8431-f162165a9371/af3d070
+
+
 ### /release/{mbid}/{id}
 
 #### Summary
@@ -97,6 +130,16 @@ the response of a /release/{mbid} request.
 
 - 503 if the user has exceeded their rate limit.
 
+#### Example
+
+    > GET /release/foo/front HTTP/1.1
+    > Host: coverartarchive.org
+
+    < HTTP/1.0 303 OK
+    < Status: 303
+    < Location: http://caa.internetarchive.org/mbid-99b09d02-9cc9-3fed-8431-f162165a9371/mbid-99b09d02-9cc9-3fed-8431-f162165a9371-af3d070.jpg
+
+
 --------
 
 ## Cover Art Archive Metadata
@@ -109,6 +152,13 @@ of a set of entries, where each entry contains:
   fetch an image.
 - The edit ID which uploaded this image.
 - Whether the image is pending peer review or has been accepted.
+- Whether the image is the 'front' image, or not.
+
+The metadata also contains a description of the release so that the Internet
+Archive are able to index this artwork. This will contain:
+
+- The release name as a string
+- The release artist credit as a string
 
 --------
 
