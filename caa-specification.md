@@ -102,7 +102,7 @@ users would most likely expect to see in:
     > GET /release/99b09d02-9cc9-3fed-8431-f162165a9371/front HTTP/1.1
     > Host: coverartarchive.org
 
-    < HTTP/1.0 307 OK
+    < HTTP/1.1 307 Temporary Redirect
     < Status: 307
     < Location: http://coverartarchive.org/release/99b09d02-9cc9-3fed-8431-f162165a9371/af3d070
 
@@ -135,7 +135,7 @@ the response of a /release/{mbid} request.
     > GET /release/foo/front HTTP/1.1
     > Host: coverartarchive.org
 
-    < HTTP/1.0 307 OK
+    < HTTP/1.1 307 Temporary Redirect
     < Status: 307
     < Location: http://archive.org/download/mbid-99b09d02-9cc9-3fed-8431-f162165a9371/mbid-99b09d02-9cc9-3fed-8431-f162165a9371-af3d070.jpg
 
