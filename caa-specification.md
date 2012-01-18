@@ -107,6 +107,49 @@ users would most likely expect to see in:
     < Location: http://coverartarchive.org/release/99b09d02-9cc9-3fed-8431-f162165a9371/af3d070
 
 
+### /release/{mbid}/back
+
+#### Summary
+
+Fetch the image that is most suitable for refering to as the "back" of a
+release. This is intentionally vague, and users will help curate this data into
+something that is meaningful. A suggested initially style is to use artwork that
+users would most likely expect to see in:
+
+* A tracklisting, barcode, and label
+* What they would expect to find on the back cover if they were looking for this 
+  release in a shop.
+
+#### Accepted Methods
+
+- GET
+- HEAD
+
+#### Responses
+
+- 307 if the community have decided upon a "back" image for this
+  release.
+
+- 400 if {mbid} cannot be parsed as a valid UUID.
+
+- 404 if there is either no release with this MBID, or the
+  community have not chosen an image to represent the back of a
+  release.
+
+- 405 if the request method is not GET or HEAD.
+
+- 503 if the user has exceeded their rate limit.
+
+#### Example
+
+    > GET /release/99b09d02-9cc9-3fed-8431-f162165a9371/back HTTP/1.1
+    > Host: coverartarchive.org
+
+    < HTTP/1.1 307 Temporary Redirect
+    < Status: 307
+    < Location: http://coverartarchive.org/release/99b09d02-9cc9-3fed-8431-f162165a9371/af3d070
+
+
 ### /release/{mbid}/{id}
 
 #### Summary
@@ -152,7 +195,7 @@ of a set of entries, where each entry contains:
   fetch an image.
 - The edit ID which uploaded this image.
 - Whether the image is pending peer review or has been accepted.
-- Whether the image is the 'front' image, or not.
+- Whether the image is the 'front'/'back' image, or not.
 
 The metadata also contains a description of the release so that the Internet
 Archive are able to index this artwork. This will contain:
