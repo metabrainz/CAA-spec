@@ -166,20 +166,20 @@ Archive are able to index this artwork. This will contain:
 
 ### Community Editing
 
-MusicBrainz provides 3 new edit types for manipulating cover art on the Cover
+MusicBrainz provides 3 new edit types for manipulating cover art in the Cover
 Art Archive.
 
 #### Add Cover Art
 
 This edit attaches a specific piece of cover art to a release. When the edit is
 successfully entered, the metadata index is updated to contain this image, with
-it's status set to 'pending review'.
+its status set to 'pending review'.
 
 If the community approves of this edit, the metadata index will be updated to
 indicate that it has been approved.
 
-If the community rejects this edit, then it will be removed from the index and
-the file store.
+If the community rejects this edit, then the entry will be removed from the index
+and the image from the file store.
 
 #### Remove Cover Art
 
@@ -193,12 +193,12 @@ If the edit is rejected, the artwork is kept.
 
 #### Edit Cover Art
 
-This edit allows users to edit a piece of cover art's data and metadata. When
+This edit allows users to replace a cover art image and/or edit its metadata. When
 the edit is entered, no changes happen to the Cover Art Archive.
 
 When the edit is accepted, the entry in the index is merged with the definition
-in the edit. If there is new cover art to upload, the artwork replaces the
-existing cover art, providing it hasn't changed since the edit was entered. If
+in the edit. If the edit included a new image, the artwork replaces the
+existing cover art — providing it hasn't changed since the edit was entered. If
 it has changed, the edit must fail as a conflict.
 
 If the edit is accepted, the Cover Art Archive does not change.
