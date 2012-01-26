@@ -160,6 +160,17 @@ Archive are able to index this artwork. This will contain:
 - The release name as a string
 - The release artist credit as a string
 
+### File naming
+
+Files are named using integers derived from the current high resolution system
+time, for example via the `Time::HiRes::time` function in Perl. The exact
+formula to create a new file name is:
+
+    int((time() - 1327528905) * 100)
+
+This filename is allocated by MusicBrainz at the time of upload, and will never
+change.
+
 --------
 
 ## The Cover Art Archive and MusicBrainz
