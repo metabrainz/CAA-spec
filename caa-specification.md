@@ -151,7 +151,6 @@ of a set of entries, where each entry contains:
 - The id of the entry. This is a URL that can be accessed with a GET request to
   fetch an image.
 - The edit ID which uploaded this image.
-- Whether the image is pending peer review or has been accepted.
 - Whether the image is the 'front' image, or not.
 
 The metadata also contains a description of the release so that the Internet
@@ -172,14 +171,18 @@ Art Archive.
 #### Add Cover Art
 
 This edit attaches a specific piece of cover art to a release. When the edit is
-successfully entered, the metadata index is updated to contain this image, with
-its status set to 'pending review'.
+successfully entered the artwork will then be available for fetching via the
+Cover Art Archive and will be in the index listing for the release.
 
-If the community approves of this edit, the metadata index will be updated to
-indicate that it has been approved.
+If the community rejects this edit, then the image will be removed from the file
+store.
 
-If the community rejects this edit, then the entry will be removed from the index
-and the image from the file store.
+MusicBrainz is in control of managing the upload, not the Cover Art
+Archive. When the user is presented with the 'add cover art' form, the server
+will allocate a unique filename for the upload, with the name
+`pending-$TIMESTAMP`. This artwork will *not* be available for fetching from the
+Cover Art Archive at all, and will only be fetchable by accessing the backend
+image store directly.
 
 #### Remove Cover Art
 
