@@ -55,7 +55,7 @@ Fetch a listing of available cover art for a MusicBrainz release.
       "artwork": [
         {
           "approved": true,
-          "id": "af3d070",
+          "id": "135741621",
           "front": true
         }
       ]
@@ -104,7 +104,7 @@ users would most likely expect to see in:
 
     < HTTP/1.1 307 Temporary Redirect
     < Status: 307
-    < Location: http://archive.org/download/mbid-99b09d02-9cc9-3fed-8431-f162165a9371/mbid-99b09d02-9cc9-3fed-8431-f162165a9371-af3d070.jpg
+    < Location: http://archive.org/download/mbid-99b09d02-9cc9-3fed-8431-f162165a9371/mbid-99b09d02-9cc9-3fed-8431-f162165a9371-135741621.jpg
 
 
 ### /release/{mbid}/{id}
@@ -132,12 +132,12 @@ the response of a /release/{mbid} request.
 
 #### Example
 
-    > GET /release/foo/af3d070.jpg HTTP/1.1
+    > GET /release/foo/135741621.jpg HTTP/1.1
     > Host: coverartarchive.org
 
     < HTTP/1.1 307 Temporary Redirect
     < Status: 307
-    < Location: http://archive.org/download/mbid-99b09d02-9cc9-3fed-8431-f162165a9371/mbid-99b09d02-9cc9-3fed-8431-f162165a9371-af3d070.jpg
+    < Location: http://archive.org/download/mbid-99b09d02-9cc9-3fed-8431-f162165a9371/mbid-99b09d02-9cc9-3fed-8431-f162165a9371-135741621.jpg
 
 
 --------
