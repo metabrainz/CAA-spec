@@ -132,7 +132,7 @@ the response of a /release/{mbid} request.
 
 #### Example
 
-    > GET /release/foo/front HTTP/1.1
+    > GET /release/foo/af3d070.jpg HTTP/1.1
     > Host: coverartarchive.org
 
     < HTTP/1.1 307 Temporary Redirect
