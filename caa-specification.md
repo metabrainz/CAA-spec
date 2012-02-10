@@ -174,6 +174,15 @@ supported thumbnail sizes are 250px and 500px.
     < Location: http://archive.org/download/mbid-99b09d02-9cc9-3fed-8431-f162165a9371/mbid-99b09d02-9cc9-3fed-8431-f162165a9371-135741621-250.jpg
 
 
+### OPTIONS support
+
+All end points at the coverartarchive.org support the HTTP OPTIONS method, to
+determine which request methods are valid for each resource. On an OPTIONS
+request, the server will do no processing, other than returning an empty
+response with the 'Allow:' header field set to the support methods for that
+resource. For supported methods, consult the specification of each individual
+resource.
+
 --------
 
 ## Cover Art Archive Metadata
