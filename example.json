@@ -1,0 +1,38 @@
+{
+	"images" : [
+		{
+			"types" : [ "Other" ],
+			"front" : true,
+			"back" : false,
+			"comment" : "",
+			"order" : 1,
+			"image" : "http://coverartarchive.org/...jpg",
+			"thumbnails" : {
+				"small" : "http://coverartarchive.org/...-250.jpg",
+				"large" : "http://coverartarchive.org/...-500.jpg"
+			},
+			"approved" : true,
+			"edit" : "http://musicbrainz.org/edit/123"
+		},
+		{
+			"types" : [ "Other" ],
+			"front" : false,
+			"back" : false,
+			"comment" : "autographed by ModBot",
+			"order" : 2,
+			"image" : "http://coverartarchive.org/...jpg",
+			"thumbnails" : {
+				"small" : "http://coverartarchive.org/...-250.jpg",
+				"large" : "http://coverartarchive.org/...-500.jpg"
+			},
+			"approved" : true,
+			"edit" : "http://musicbrainz.org/edit/123"
+		}
+	],
+	"release" : {
+		"title" : "Example test release",
+		"artist" : "MusicBrainz Test Artist",
+		"barcode" : null,
+		"catalognumbers": [ "EX-0001" ]
+	}
+}
