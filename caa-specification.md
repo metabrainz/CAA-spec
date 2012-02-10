@@ -121,8 +121,8 @@ the response of a /release/{mbid} request.
 
 #### Responses
 
-- 307 redirect to a binary image, matching the Content-Type to a
-  value in the requests Accept header field.
+- 307 redirect to a binary image. This redirected request may resolve to a 404
+  if the thumbnail does not exist.
 
 - 404 if a release with this MBID cannot be found.
 
