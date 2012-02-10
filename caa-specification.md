@@ -55,7 +55,7 @@ Fetch a listing of available cover art for a MusicBrainz release.
       "artwork": [
         {
           "approved": true,
-          "id": "af3d070",
+          "id": "135741621",
           "front": true
         }
       ]
@@ -104,7 +104,7 @@ users would most likely expect to see in:
 
     < HTTP/1.1 307 Temporary Redirect
     < Status: 307
-    < Location: http://coverartarchive.org/release/99b09d02-9cc9-3fed-8431-f162165a9371/af3d070
+    < Location: http://archive.org/download/mbid-99b09d02-9cc9-3fed-8431-f162165a9371/mbid-99b09d02-9cc9-3fed-8431-f162165a9371-135741621.jpg
 
 
 ### /release/{mbid}/back
@@ -164,8 +164,8 @@ the response of a /release/{mbid} request.
 
 #### Responses
 
-- 307 redirect to a binary image, matching the Content-Type to a
-  value in the requests Accept header field.
+- 307 redirect to a binary image. This redirected request may resolve to a 404
+  if the thumbnail does not exist.
 
 - 404 if a release with this MBID cannot be found.
 
@@ -175,13 +175,56 @@ the response of a /release/{mbid} request.
 
 #### Example
 
-    > GET /release/foo/front HTTP/1.1
+    > GET /release/foo/135741621.jpg HTTP/1.1
     > Host: coverartarchive.org
 
     < HTTP/1.1 307 Temporary Redirect
     < Status: 307
-    < Location: http://archive.org/download/mbid-99b09d02-9cc9-3fed-8431-f162165a9371/mbid-99b09d02-9cc9-3fed-8431-f162165a9371-af3d070.jpg
+    < Location: http://archive.org/download/mbid-99b09d02-9cc9-3fed-8431-f162165a9371/mbid-99b09d02-9cc9-3fed-8431-f162165a9371-135741621.jpg
 
+
+### /release/{mbid}/{id}-(250|500)
+
+#### Summary
+
+Fetch a thumbnail for a specific piece of artwork. Possible {id} values can be
+found by parsing the response of a /release/{mbid} request. The current
+supported thumbnail sizes are 250px and 500px.
+
+#### Accepted methods
+
+- GET
+- HEAD
+
+#### Responses
+
+- 307 redirect to a binary image. This redirected request may resolve to a 404
+  if the thumbnail does not exist.
+
+- 404 if a release with this MBID cannot be found.
+
+- 405 if the request method is not GET or HEAD.
+
+- 503 if the user has exceeded their rate limit.
+
+#### Example
+
+    > GET /release/99b09d02-9cc9-3fed-8431-f162165a9371/135741621-250.jpg HTTP/1.1
+    > Host: coverartarchive.org
+
+    < HTTP/1.1 307 Temporary Redirect
+    < Status: 307
+    < Location: http://archive.org/download/mbid-99b09d02-9cc9-3fed-8431-f162165a9371/mbid-99b09d02-9cc9-3fed-8431-f162165a9371-135741621-250.jpg
+
+
+### OPTIONS support
+
+All end points at the coverartarchive.org support the HTTP OPTIONS method, to
+determine which request methods are valid for each resource. On an OPTIONS
+request, the server will do no processing, other than returning an empty
+response with the 'Allow:' header field set to the support methods for that
+resource. For supported methods, consult the specification of each individual
+resource.
 
 --------
 
@@ -203,26 +246,37 @@ Archive are able to index this artwork. This will contain:
 - The release name as a string
 - The release artist credit as a string
 
+### File naming
+
+Files are named using integers derived from the current high resolution system
+time, for example via the `Time::HiRes::time` function in Perl. The exact
+formula to create a new file name is:
+
+    int((time() - 1327528905) * 100)
+
+This filename is allocated by MusicBrainz at the time of upload, and will never
+change.
+
 --------
 
 ## The Cover Art Archive and MusicBrainz
 
 ### Community Editing
 
-MusicBrainz provides 3 new edit types for manipulating cover art on the Cover
+MusicBrainz provides 3 new edit types for manipulating cover art in the Cover
 Art Archive.
 
 #### Add Cover Art
 
 This edit attaches a specific piece of cover art to a release. When the edit is
 successfully entered, the metadata index is updated to contain this image, with
-it's status set to 'pending review'.
+its status set to 'pending review'.
 
 If the community approves of this edit, the metadata index will be updated to
 indicate that it has been approved.
 
-If the community rejects this edit, then it will be removed from the index and
-the file store.
+If the community rejects this edit, then the entry will be removed from the index
+and the image from the file store.
 
 #### Remove Cover Art
 
@@ -236,12 +290,12 @@ If the edit is rejected, the artwork is kept.
 
 #### Edit Cover Art
 
-This edit allows users to edit a piece of cover art's data and metadata. When
+This edit allows users to replace a cover art image and/or edit its metadata. When
 the edit is entered, no changes happen to the Cover Art Archive.
 
 When the edit is accepted, the entry in the index is merged with the definition
-in the edit. If there is new cover art to upload, the artwork replaces the
-existing cover art, providing it hasn't changed since the edit was entered. If
+in the edit. If the edit included a new image, the artwork replaces the
+existing cover art — providing it hasn't changed since the edit was entered. If
 it has changed, the edit must fail as a conflict.
 
 If the edit is accepted, the Cover Art Archive does not change.
