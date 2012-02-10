@@ -140,6 +140,40 @@ the response of a /release/{mbid} request.
     < Location: http://archive.org/download/mbid-99b09d02-9cc9-3fed-8431-f162165a9371/mbid-99b09d02-9cc9-3fed-8431-f162165a9371-135741621.jpg
 
 
+### /release/{mbid}/{id}-(250|500)
+
+#### Summary
+
+Fetch a thumbnail for a specific piece of artwork. Possible {id} values can be
+found by parsing the response of a /release/{mbid} request. The current
+supported thumbnail sizes are 250px and 500px.
+
+#### Accepted methods
+
+- GET
+- HEAD
+
+#### Responses
+
+- 307 redirect to a binary image. This redirected request may resolve to a 404
+  if the thumbnail does not exist.
+
+- 404 if a release with this MBID cannot be found.
+
+- 405 if the request method is not GET or HEAD.
+
+- 503 if the user has exceeded their rate limit.
+
+#### Example
+
+    > GET /release/99b09d02-9cc9-3fed-8431-f162165a9371/135741621-250.jpg HTTP/1.1
+    > Host: coverartarchive.org
+
+    < HTTP/1.1 307 Temporary Redirect
+    < Status: 307
+    < Location: http://archive.org/download/mbid-99b09d02-9cc9-3fed-8431-f162165a9371/mbid-99b09d02-9cc9-3fed-8431-f162165a9371-135741621-250.jpg
+
+
 --------
 
 ## Cover Art Archive Metadata
