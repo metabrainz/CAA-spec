@@ -62,13 +62,13 @@ Fetch a listing of available cover art for a MusicBrainz release.
     }
 
 
-### /release/{mbid}/front
+### /release/{mbid}/front.jpg
 
 #### Summary
 
 Fetch the image that is most suitable for refering to as the "front" of a
 release. This is intentionally vague, and users will help curate this data into
-something that is meaningful. A suggested initially style is to use artwork that
+something that is meaningful. A suggested initial style is to use artwork that
 users would most likely expect to see in:
 
 * Digital shops when searching for the release
@@ -104,10 +104,10 @@ users would most likely expect to see in:
 
     < HTTP/1.1 307 Temporary Redirect
     < Status: 307
-    < Location: http://coverartarchive.org/release/99b09d02-9cc9-3fed-8431-f162165a9371/af3d070
+    < Location: http://coverartarchive.org/release/99b09d02-9cc9-3fed-8431-f162165a9371/af3d070.jpg
 
 
-### /release/{mbid}/{id}
+### /release/{mbid}/{id}.jpg
 
 #### Summary
 
@@ -132,7 +132,7 @@ the response of a /release/{mbid} request.
 
 #### Example
 
-    > GET /release/foo/front HTTP/1.1
+    > GET /release/99b09d02-9cc9-3fed-8431-f162165a9371/af3d070.jpg HTTP/1.1
     > Host: coverartarchive.org
 
     < HTTP/1.1 307 Temporary Redirect
