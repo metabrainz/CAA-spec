@@ -104,7 +104,7 @@ users would most likely expect to see in:
 
     < HTTP/1.1 307 Temporary Redirect
     < Status: 307
-    < Location: http://coverartarchive.org/release/99b09d02-9cc9-3fed-8431-f162165a9371/af3d070
+    < Location: http://archive.org/download/mbid-99b09d02-9cc9-3fed-8431-f162165a9371/mbid-99b09d02-9cc9-3fed-8431-f162165a9371-af3d070.jpg
 
 
 ### /release/{mbid}/{id}
