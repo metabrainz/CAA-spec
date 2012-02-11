@@ -230,21 +230,40 @@ resource.
 
 ## Cover Art Archive Metadata
 
-The Cover Art Archive provides a collection of metadata with each release, which
-allows users to determine what cover art can be used for. The metadata consists
-of a set of entries, where each entry contains:
+The Cover Art Archive provides a collection of metadata with each
+release, which allows users to determine what cover art can be used
+for.  The metadata will be stored and served as application/json.  The
+metadata consists of a list of entries, where each entry contains:
 
-- The id of the entry. This is a URL that can be accessed with a GET request to
-  fetch an image.
-- The edit ID which uploaded this image.
-- Whether the image is pending peer review or has been accepted.
-- Whether the image is the 'front'/'back' image, or not.
+- _image_: the full coverartarchive.org url to the original image
+- _thumbnails_: { small: “http://coverartarchive.org/...-250.jpg”, large: “http://coverartarchive.org/...-500.jpg” }
+- _types_: list of one or more types for the image (see below).
+- _front_: boolean
+- _back_: boolean
+- _comment_: a free text comment
+- _order_: a single integer which specifies the order of this image in relation to other images
+- _appproved_: whether the image was approved by the musicbrainz edit system
+- _edit_: full url to the edit on musicbrainz (e.g. musicbrainz.org/edit/123)
 
 The metadata also contains a description of the release so that the Internet
 Archive are able to index this artwork. This will contain:
 
-- The release name as a string
-- The release artist credit as a string
+- _title_: the release title as a string
+- _artist_: the artist credit as a string
+- _barcode_: the barcode as a string
+- _catalog_numbers_: a list of catalog numbers, each item is a string
+
+See the included "example.json" for a full example of how this
+file will look.
+
+### Cover art types
+
+The list of image types will be defined as part of this CAA spec, but
+can be amended in the future using the normal StyleCouncil process.
+So far the types we've agreed on are:
+
+- Other
+
 
 ### File naming
 
