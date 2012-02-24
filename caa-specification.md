@@ -154,11 +154,11 @@ of a set of entries, where each entry contains:
 - Whether the image is pending peer review or has been accepted.
 - Whether the image is the 'front' image, or not.
 
-The metadata also contains a description of the release so that the Internet
-Archive are able to index this artwork. This will contain:
+The bucket should also contain a file called metadata.xml which contains the MusicBrainz
+XML metadata for the release so that the Internet Archive are able to index this artwork. 
+This will be the output of this MusicBrainz WS call:
 
-- The release name as a string
-- The release artist credit as a string
+   http://musicbrainz.org/ws/2/release/{mbid}?inc=artists
 
 --------
 
