@@ -244,13 +244,8 @@ metadata consists of a list of entries, where each entry contains:
 - _appproved_: whether the image was approved by the musicbrainz edit system
 - _edit_: full url to the edit on musicbrainz (e.g. musicbrainz.org/edit/123)
 
-The metadata also contains a description of the release so that the Internet
-Archive are able to index this artwork. This will contain:
-
-- _title_: the release title as a string
-- _artist_: the artist credit as a string
-- _barcode_: the barcode as a string
-- _catalog_numbers_: a list of catalog numbers, each item is a string
+The metadata also contains a link to the MusicBrainz release, under the
+_release_ field.
 
 See the included "example.json" for a full example of how this
 file will look.

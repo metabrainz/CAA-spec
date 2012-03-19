@@ -27,10 +27,5 @@
 			"edit" : "http://musicbrainz.org/edit/123"
 		}
 	],
-	"release" : {
-		"title" : "Example test release",
-		"artist" : "MusicBrainz Test Artist",
-		"barcode" : null,
-		"catalognumbers": [ "EX-0001" ]
-	}
+	"release" : "http://musicbrainz.org/release/2ba4396d-c0be-4a56-b4ea-0438306eb3be"
 }
