@@ -241,7 +241,6 @@ metadata consists of a list of entries, where each entry contains:
 - _front_: boolean
 - _back_: boolean
 - _comment_: a free text comment
-- _order_: a single integer which specifies the order of this image in relation to other images
 - _appproved_: whether the image was approved by the musicbrainz edit system
 - _edit_: full url to the edit on musicbrainz (e.g. musicbrainz.org/edit/123)
 
